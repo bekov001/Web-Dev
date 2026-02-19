@@ -43,6 +43,14 @@ function setupEventListeners() {
       const todoId = parseInt(todoItem.dataset.id, 10);
       deleteTodo(todoId);
     }
+
+  });
+  todoList.addEventListener('click', (event) => {
+    if (event.target.classList.contains('edit-button')) {
+      const todoItem = event.target.closest('.todo-item');
+      const todoId = parseInt(todoItem.dataset.id, 10);
+      editTodo(todoId);
+    }
   });
 }
 
@@ -172,6 +180,12 @@ function createTodoElement(todo) {
   checkboxContainer.appendChild(checkbox);
   checkboxContainer.appendChild(todoText);
 
+
+  const editButton = document.createElement('button');
+  editButton.type = 'button';
+  editButton.className = 'edit-button';
+  editButton.textContent = 'Edit';
+
   // Create delete button
   const deleteButton = document.createElement('button');
   deleteButton.type = 'button';
@@ -181,8 +195,18 @@ function createTodoElement(todo) {
   // Append all elements to todo item
   todoItem.appendChild(checkboxContainer);
   todoItem.appendChild(deleteButton);
-
+  todoItem.appendChild(checkboxContainer);
+  todoItem.appendChild(editButton);
   return todoItem;
+}
+
+function editTodo(todoId) {
+  const todo = todos.find((item) => item.id === todoId);
+  if (todo) {
+    todo.text = prompt('Edit task:', todo.text);
+    saveTodos();
+    renderTodos();
+  }
 }
 
 /**

@@ -1,0 +1,12 @@
+<section class="page">
+  <header class="page-header">
+    <h1>Online Store</h1>
+    <p>Simple catalog with real Kaspi product links and share buttons.</p>
+  </header>
+
+  <div class="grid">
+    @for (product of products; track product.id) {
+      <app-product-card [product]="product" (share)="onShare($event)" />
+    }
+  </div>
+</section>

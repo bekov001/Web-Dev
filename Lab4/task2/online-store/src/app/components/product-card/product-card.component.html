@@ -1,0 +1,46 @@
+<article class="card">
+  <a class="image-link" [href]="product().link" target="_blank" rel="noopener">
+    <img class="main-image" [src]="selectedImage()" [alt]="product().name" />
+  </a>
+
+  <div class="thumbs">
+    @for (img of product().images; track $index) {
+      <button
+        class="thumb"
+        type="button"
+        [class.active]="$index === selectedIndex()"
+        (click)="selectImage($index)"
+        aria-label="Select product image"
+      >
+        <img [src]="img" [alt]="product().name + ' thumbnail ' + ($index + 1)" />
+      </button>
+    }
+  </div>
+
+  @if (product().rating >= 4.7) {
+    <span class="badge">Top rated</span>
+  }
+
+  <h3 class="name">{{ product().name }}</h3>
+  <p class="desc">{{ product().description }}</p>
+
+  <div class="meta">
+    <span class="price">{{ product().price | number: '1.0-0' }} ₸</span>
+    <span class="rating">
+      @for (star of stars; track star) {
+        <span class="star" [class.filled]="star <= roundedRating()">★</span>
+      }
+      <span class="rating-value">{{ product().rating }}</span>
+    </span>
+  </div>
+
+  <div class="actions">
+    <a class="kaspi-link" [href]="product().link" target="_blank" rel="noopener">
+      Open in Kaspi
+    </a>
+    <div class="share">
+      <button type="button" (click)="shareOn('whatsapp')">Share WhatsApp</button>
+      <button type="button" (click)="shareOn('telegram')">Share Telegram</button>
+    </div>
+  </div>
+</article>
