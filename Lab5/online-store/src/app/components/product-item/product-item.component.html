@@ -1,0 +1,39 @@
+<article class="card">
+  <a class="image-link" [href]="product().link" target="_blank" rel="noopener">
+    <img class="main-image" [src]="product().image" [alt]="product().name" />
+  </a>
+
+  @if (product().rating >= 4.7) {
+    <span class="badge">Top rated</span>
+  }
+
+  <h3 class="name">{{ product().name }}</h3>
+  <p class="desc">{{ product().description }}</p>
+
+  <div class="meta">
+    <span class="price">{{ product().price | number: '1.0-0' }} &#8376;</span>
+    <span class="rating">
+      @for (star of stars; track star) {
+        <span class="star" [class.filled]="star <= roundedRating()">&#9733;</span>
+      }
+      <span class="rating-value">{{ product().rating }}</span>
+    </span>
+  </div>
+
+  <div class="likes-row">
+    <button class="like-btn" type="button" (click)="onLike()">
+      &#10084; {{ product().likes }}
+    </button>
+  </div>
+
+  <div class="actions">
+    <a class="kaspi-link" [href]="product().link" target="_blank" rel="noopener">
+      Open in Kaspi
+    </a>
+    <div class="share">
+      <button type="button" (click)="shareOn('whatsapp')">Share WhatsApp</button>
+      <button type="button" (click)="shareOn('telegram')">Share Telegram</button>
+    </div>
+    <button class="delete-btn" type="button" (click)="onDelete()">Delete</button>
+  </div>
+</article>

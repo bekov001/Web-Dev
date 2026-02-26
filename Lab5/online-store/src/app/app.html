@@ -1,0 +1,37 @@
+<div class="app-shell">
+  <nav class="top-bar">
+    <span class="logo">Lab 5</span>
+    <span class="title">Online Store</span>
+  </nav>
+
+  <main class="content">
+    <section class="page">
+      <div class="categories">
+        @for (cat of categories; track cat.id) {
+          <button
+            class="cat-btn"
+            type="button"
+            [class.active]="selectedCategory?.id === cat.id"
+            (click)="selectCategory(cat)"
+          >
+            {{ cat.name }}
+          </button>
+        }
+      </div>
+
+      @if (selectedCategory) {
+        <h2 class="section-title">{{ selectedCategory.name }}</h2>
+        <app-product-list [products]="selectedProducts" />
+      } @else {
+        <div class="welcome">
+          <h2>Welcome to the Online Store</h2>
+          <p>Select a category above to browse products.</p>
+        </div>
+      }
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Kaspi product catalog demo for Angular</span>
+  </footer>
+</div>
