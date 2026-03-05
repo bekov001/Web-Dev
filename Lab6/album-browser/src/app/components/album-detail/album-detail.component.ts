@@ -31,12 +31,17 @@ export class AlbumDetailComponent implements OnInit {
     });
   }
 
+  onTitleChange(event: Event): void {
+    this.editTitle.set((event.target as HTMLInputElement).value);
+  }
+
   onSave(): void {
     const current = this.album();
     if (!current) return;
     const updated: Album = { ...current, title: this.editTitle() };
     this.albumService.updateAlbum(updated).subscribe((result) => {
       this.album.set(result);
+      this.editTitle.set(result.title);
       this.saved.set(true);
       setTimeout(() => this.saved.set(false), 2000);
     });
