@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AlbumService } from '../../services/album.service';
 import { Photo } from '../../models/photo.model';
@@ -11,9 +11,9 @@ import { Photo } from '../../models/photo.model';
   styleUrl: './album-photos.component.css',
 })
 export class AlbumPhotosComponent implements OnInit {
-  photos: Photo[] = [];
+  photos = signal<Photo[]>([]);
   albumId = 0;
-  loading = true;
+  loading = signal(true);
 
   constructor(
     private route: ActivatedRoute,
@@ -23,8 +23,8 @@ export class AlbumPhotosComponent implements OnInit {
   ngOnInit(): void {
     this.albumId = Number(this.route.snapshot.paramMap.get('id'));
     this.albumService.getAlbumPhotos(this.albumId).subscribe((data) => {
-      this.photos = data;
-      this.loading = false;
+      this.photos.set(data);
+      this.loading.set(false);
     });
   }
 }

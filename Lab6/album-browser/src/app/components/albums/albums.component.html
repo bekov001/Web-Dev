@@ -1,13 +1,13 @@
 <section class="albums-page">
   <h1>Albums</h1>
 
-  @if (loading) {
+  @if (loading()) {
     <p class="loading">Loading albums...</p>
-  } @else if (albums.length === 0) {
+  } @else if (albums().length === 0) {
     <p class="empty">No albums found.</p>
   } @else {
     <ul class="album-list">
-      @for (album of albums; track album.id) {
+      @for (album of albums(); track album.id) {
         <li class="album-item">
           <a [routerLink]="['/albums', album.id]" class="album-link">
             <span class="album-id">#{{ album.id }}</span>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AlbumService } from '../../services/album.service';
 import { Album } from '../../models/album.model';
@@ -11,22 +11,22 @@ import { Album } from '../../models/album.model';
   styleUrl: './albums.component.css',
 })
 export class AlbumsComponent implements OnInit {
-  albums: Album[] = [];
-  loading = true;
+  albums = signal<Album[]>([]);
+  loading = signal(true);
 
   constructor(private albumService: AlbumService) {}
 
   ngOnInit(): void {
     this.albumService.getAlbums().subscribe((data) => {
-      this.albums = data;
-      this.loading = false;
+      this.albums.set(data);
+      this.loading.set(false);
     });
   }
 
   onDelete(album: Album, event: Event): void {
     event.stopPropagation();
     this.albumService.deleteAlbum(album.id).subscribe(() => {
-      this.albums = this.albums.filter((a) => a.id !== album.id);
+      this.albums.update((list) => list.filter((a) => a.id !== album.id));
     });
   }
 }
