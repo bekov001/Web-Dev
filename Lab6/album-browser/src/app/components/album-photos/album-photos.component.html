@@ -1,0 +1,20 @@
+<section class="photos-page">
+  <a class="back-btn" [routerLink]="['/albums', albumId]">&#8592; Back to Album</a>
+
+  <h1>Photos — Album #{{ albumId }}</h1>
+
+  @if (loading) {
+    <p class="loading">Loading photos...</p>
+  } @else if (photos.length === 0) {
+    <p class="empty">No photos found for this album.</p>
+  } @else {
+    <div class="photo-grid">
+      @for (photo of photos; track photo.id) {
+        <div class="photo-card">
+          <img [src]="photo.thumbnailUrl" [alt]="photo.title" />
+          <span class="photo-title">{{ photo.title }}</span>
+        </div>
+      }
+    </div>
+  }
+</section>

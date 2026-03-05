@@ -1,0 +1,30 @@
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  margin: 0 0 12px;
+}
+
+.hero p {
+  color: #555;
+  font-size: 1.1rem;
+  margin: 0 0 28px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #111827;
+  color: #f9fafb;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: background 0.15s;
+}
+
+.btn:hover {
+  background: #1f2937;
+}

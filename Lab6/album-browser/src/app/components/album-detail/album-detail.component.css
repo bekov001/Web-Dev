@@ -1,0 +1,102 @@
+.detail-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.loading {
+  color: #888;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.back-btn {
+  background: none;
+  border: 1px solid #d1d5db;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.back-btn:hover {
+  background: #f3f4f6;
+}
+
+.detail-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.detail-card h1 {
+  margin: 0 0 12px;
+  font-size: 1.5rem;
+}
+
+.detail-card p {
+  margin: 6px 0;
+  color: #333;
+}
+
+.edit-section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-section label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.edit-section input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.save-btn {
+  align-self: flex-start;
+  padding: 10px 24px;
+  background: #111827;
+  color: #f9fafb;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: background 0.15s;
+}
+
+.save-btn:hover {
+  background: #1f2937;
+}
+
+.saved-msg {
+  color: #16a34a;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.photos-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #2563eb;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: background 0.15s;
+}
+
+.photos-link:hover {
+  background: #1d4ed8;
+}

@@ -1,0 +1,24 @@
+<section class="detail-page">
+  @if (loading) {
+    <p class="loading">Loading album...</p>
+  } @else if (album) {
+    <button class="back-btn" type="button" (click)="goBack()">&#8592; Back to Albums</button>
+
+    <div class="detail-card">
+      <h1>Album #{{ album.id }}</h1>
+      <p><strong>User ID:</strong> {{ album.userId }}</p>
+      <p><strong>Title:</strong> {{ album.title }}</p>
+
+      <div class="edit-section">
+        <label for="title-input">Edit title:</label>
+        <input id="title-input" type="text" [(ngModel)]="editTitle" />
+        <button class="save-btn" type="button" (click)="onSave()">Save</button>
+        @if (saved) {
+          <span class="saved-msg">Saved!</span>
+        }
+      </div>
+
+      <a class="photos-link" [routerLink]="['/albums', album.id, 'photos']">View Photos</a>
+    </div>
+  }
+</section>
