@@ -39,9 +39,8 @@ export class AlbumDetailComponent implements OnInit {
     const current = this.album();
     if (!current) return;
     const updated: Album = { ...current, title: this.editTitle() };
-    this.albumService.updateAlbum(updated).subscribe((result) => {
-      this.album.set(result);
-      this.editTitle.set(result.title);
+    this.albumService.updateAlbum(updated).subscribe(() => {
+      this.album.set(updated);
       this.saved.set(true);
       setTimeout(() => this.saved.set(false), 2000);
     });
